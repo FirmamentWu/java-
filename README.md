@@ -67,7 +67,6 @@
 
 ## 项目结构
 
-```plaintext
 .
 ├── LICENSE
 ├── README.md
