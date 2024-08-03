@@ -1,0 +1,239 @@
+.
+├── App.vue
+├── api.js
+├── assets
+│   ├── gramos
+│   │   ├── avatar.jpg
+│   │   ├── dark-logo.png
+│   │   ├── light-logo.png
+│   │   └── login.png
+│   └── style.scss
+├── components
+│   ├── Tinymce
+│   │   ├── components
+│   │   │   └── EditorImage.vue
+│   │   ├── dynamicLoadScript.js
+│   │   ├── index.vue
+│   │   ├── plugins.js
+│   │   └── toolbar.js
+│   ├── address
+│   │   ├── address-name.vue
+│   │   ├── address.vue
+│   │   ├── detail.vue
+│   │   └── index.js
+│   ├── audio
+│   │   ├── MKPlayer.js
+│   │   ├── MKPlayer.vue
+│   │   ├── asset
+│   │   │   └── icon
+│   │   ├── audio.vue
+│   │   ├── components
+│   │   │   └── progress.vue
+│   │   ├── index.js
+│   │   └── play-list.vue
+│   ├── collect
+│   │   ├── collect.vue
+│   │   └── index.js
+│   ├── common
+│   │   └── index.js
+│   ├── container
+│   │   ├── container.vue
+│   │   └── index.js
+│   ├── editor
+│   │   ├── editor.vue
+│   │   └── index.js
+│   ├── image
+│   │   ├── images
+│   │   │   ├── timeout.png
+│   │   │   └── timeout2.png
+│   │   ├── images.vue
+│   │   ├── img-box.vue
+│   │   ├── img.vue
+│   │   ├── index.js
+│   │   ├── upload-image.vue
+│   │   └── upload-images.vue
+│   ├── index.js
+│   ├── mixins
+│   │   └── gotoUrl.js
+│   ├── module
+│   │   ├── blog.vue
+│   │   ├── index.js
+│   │   ├── model-box.vue
+│   │   ├── module-info.vue
+│   │   ├── news-list.vue
+│   │   ├── products.vue
+│   │   └── xiezi.vue
+│   ├── paper
+│   │   ├── index.js
+│   │   ├── paper-form.vue
+│   │   ├── paper-view.vue
+│   │   ├── paper.vue
+│   │   └── type
+│   │       ├── checkbox.vue
+│   │       ├── radio.vue
+│   │       └── textarea.vue
+│   ├── select
+│   │   ├── index.js
+│   │   ├── select-list.vue
+│   │   └── select-view.vue
+│   ├── shangpin
+│   │   ├── index.js
+│   │   └── shangpinban.vue
+│   ├── spec
+│   │   ├── index.js
+│   │   └── spec.vue
+│   ├── sxshop
+│   │   ├── image-toggle.vue
+│   │   └── index.js
+│   ├── tree
+│   │   ├── index.js
+│   │   └── tree.vue
+│   ├── upload
+│   │   ├── file-list.vue
+│   │   ├── index.js
+│   │   └── upload-file.vue
+│   └── video
+│       ├── index.js
+│       ├── poster.jpg
+│       ├── video-list.vue
+│       └── video.vue
+├── config.js
+├── main.js
+├── project-structure.txt
+├── router
+│   ├── admin-routes.js
+│   ├── index.js
+│   ├── module
+│   ├── permission.js
+│   ├── routes.js
+│   └── web-routes.js
+├── setting.js
+├── store
+│   ├── actions.js
+│   ├── index.js
+│   ├── modules
+│   │   └── user.js
+│   ├── mutations.js
+│   └── state.js
+├── styles.scss
+├── utils
+│   ├── ajax
+│   │   ├── http.js
+│   │   └── index.js
+│   ├── date.js
+│   ├── extend.js
+│   ├── rule.js
+│   └── utils.js
+└── views
+    ├── admin
+    │   ├── app.scss
+    │   ├── index.vue
+    │   ├── mod.vue
+    │   ├── sidebar
+    │   │   ├── guanliyuan.js
+    │   │   ├── index.js
+    │   │   └── yonghu.js
+    │   └── sy.vue
+    ├── admins
+    │   ├── add.vue
+    │   ├── list.vue
+    │   ├── updt.vue
+    │   └── updtself.vue
+    ├── difangmeishi
+    │   ├── add.vue
+    │   ├── detail.vue
+    │   ├── index.vue
+    │   ├── list.vue
+    │   ├── updt.vue
+    │   └── webdetail.vue
+    ├── diqu
+    │   ├── add.vue
+    │   ├── list.vue
+    │   └── updt.vue
+    ├── footer.vue
+    ├── header.vue
+    ├── home.vue
+    ├── index.vue
+    ├── jingdianxinxi
+    │   ├── add.vue
+    │   ├── detail.vue
+    │   ├── index.vue
+    │   ├── list.vue
+    │   ├── updt.vue
+    │   └── webdetail.vue
+    ├── liuyanban
+    │   ├── add.vue
+    │   ├── detail.vue
+    │   ├── list-liuyanren.vue
+    │   ├── list.vue
+    │   ├── updt.vue
+    │   └── webadd.vue
+    ├── login
+    │   ├── captch.vue
+    │   └── index.vue
+    ├── lunbotu
+    │   ├── add.vue
+    │   ├── list.vue
+    │   └── updt.vue
+    ├── lvyouxianlu
+    │   ├── add.vue
+    │   ├── detail.vue
+    │   ├── index.vue
+    │   ├── list.vue
+    │   ├── updt.vue
+    │   └── webdetail.vue
+    ├── meishifenlei
+    │   ├── add.vue
+    │   ├── list.vue
+    │   └── updt.vue
+    ├── shoucangjilu
+    │   └── list.vue
+    ├── total
+    │   └── total.vue
+    ├── xinwenfenlei
+    │   ├── add.vue
+    │   ├── list.vue
+    │   └── updt.vue
+    ├── xinwenxinxi
+    │   ├── add.vue
+    │   ├── detail.vue
+    │   ├── index.vue
+    │   ├── list-tianjiaren.vue
+    │   ├── list.vue
+    │   ├── updt.vue
+    │   └── webdetail.vue
+    ├── yonghu
+    │   ├── add.vue
+    │   ├── list.vue
+    │   ├── updt.vue
+    │   ├── updtself.vue
+    │   └── webadd.vue
+    ├── youqinglianjie
+    │   ├── add.vue
+    │   ├── list.vue
+    │   └── updt.vue
+    ├── yuding
+    │   ├── add.vue
+    │   ├── list-yudingren.vue
+    │   ├── list.vue
+    │   ├── updt.vue
+    │   └── webadd.vue
+    └── zhifu
+        ├── 888.png
+        ├── alipay.png
+        ├── bank_ico.png
+        ├── ep-loader-icon.png
+        ├── ep-sprite3.png
+        ├── ep-sprite3@2x.png
+        ├── ep_modal_mask.png
+        ├── ep_new_sprites.png
+        ├── ep_new_sprites@2x.png
+        ├── ep_sprites.png
+        ├── ep_sprites2.png
+        ├── question-guide-close-btn.png
+        ├── question-icon.png
+        ├── spritesheet.png
+        ├── spritesheet@2x.png
+        └── zhifu.vue
+
+54 directories, 183 files
