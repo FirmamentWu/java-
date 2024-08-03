@@ -66,7 +66,7 @@
 感谢学校和指导老师在设计过程中的帮助和建议，使系统开发水平得到了提高。
 
 ## 项目结构
-
+```plaintext
 .
 ├── LICENSE
 ├── README.md
@@ -1087,7 +1087,7 @@
     └── spbootvue07987.sql
 
 983 directories, 35 files
-
+```
 
 
 ## 参考文献
