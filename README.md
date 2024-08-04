@@ -214,8 +214,6 @@ graph LR
 graph LR
     A[个人主页] --> B[旅游线路预订]
     A --> C[管理个人信息]
-    style B fill:#ffb,stroke:#333,stroke-width:2px;
-    style C fill:#ffb,stroke:#333,stroke-width:2px;
 ```
 
 ## 10.3.3 账号模块
@@ -227,10 +225,7 @@ graph TD
     A --> C[删除账号]
     A --> D[修改账号]
     A --> E[查询账号]
-    style B fill:#f9f,stroke:#333,stroke-width:2px;
-    style C fill:#f9f,stroke:#333,stroke-width:2px;
-    style D fill:#f9f,stroke:#333,stroke-width:2px;
-    style E fill:#f9f,stroke:#333,stroke-width:2px;
+    
 ```
 
 ## 10.3.4 用户模块
@@ -243,11 +238,7 @@ graph TD
     A --> D[修改用户]
     A --> E[查询用户]
     A --> F[修改密码]
-    style B fill:#ffb,stroke:#333,stroke-width:2px;
-    style C fill:#ffb,stroke:#333,stroke-width:2px;
-    style D fill:#ffb,stroke:#333,stroke-width:2px;
-    style E fill:#ffb,stroke:#333,stroke-width:2px;
-    style F fill:#ffb,stroke:#333,stroke-width:2px;
+    
 ```
 
 ## 10.3.5 地区模块
@@ -259,10 +250,7 @@ graph TD
     A --> C[删除地区]
     A --> D[修改地区]
     A --> E[查询地区]
-    style B fill:#f9f,stroke:#333,stroke-width:2px;
-    style C fill:#f9f,stroke:#333,stroke-width:2px;
-    style D fill:#f9f,stroke:#333,stroke-width:2px;
-    style E fill:#f9f,stroke:#333,stroke-width:2px;
+    
 ```
 
 ## 10.3.6 景点模块
@@ -276,12 +264,7 @@ graph TD
     A --> E[查询景点]
     A --> F[编辑描述]
     A --> G[编辑详情]
-    style B fill:#ffb,stroke:#333,stroke-width:2px;
-    style C fill:#ffb,stroke:#333,stroke-width:2px;
-    style D fill:#ffb,stroke:#333,stroke-width:2px;
-    style E fill:#ffb,stroke:#333,stroke-width:2px;
-    style F fill:#ffb,stroke:#333,stroke-width:2px;
-    style G fill:#ffb,stroke:#333,stroke-width:2px;
+    
 ```
 
 ## 10.3.7 地方美食模块
@@ -295,6 +278,7 @@ graph TD
     A --> E[查询美食]
     A --> F[美食分类添加]
     A --> G[美食分类查询]
+    
 ```
 
 ## 10.3.8 旅游线路模块
@@ -308,6 +292,7 @@ graph TD
     A --> E[查询线路]
     A --> F[查看详情]
     A --> G[打印详情]
+    
 ```
 
 ## 10.3.9 订单信息模块
@@ -332,6 +317,7 @@ graph TD
     A --> G[删除新闻内容]
     A --> H[修改新闻内容]
     A --> I[查询新闻内容]
+    
 ```
 
 ## 10.3.11 系统模块
@@ -344,6 +330,7 @@ graph TD
     A --> D[添加轮播图]
     A --> E[查询轮播图]
     A --> F[留言管理]
+    
 ```
 
 ## 10.3.12 线路预订模块
@@ -355,6 +342,7 @@ graph LR
     B --> C[预订线路]
     C --> D[支付]
     D --> E[确认预订]
+    
 ```
 
 ## 10.3.13 个人中心模块
