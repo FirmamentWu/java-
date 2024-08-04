@@ -75,6 +75,8 @@ B/S（Browser/Server，浏览器/服务器）结构是网络应用中一种常�
 #### 8.2.2 C/S 结构
 C/S（Client/Server，客户端/服务器）结构是另一种常见的架构模式，客户端软件需要安装在用户的本地计算机上，通过网络与服务器通信。该结构多用于桌面应用和需要较高交互性的应用。
 
+___在这里我们主要使用B/S结构___
+
 ### 8.3 MySQL 数据库
 MySQL 是一个开源的关系数据库管理系统，它支持多用户环境下的数据库应用。MySQL 提供了存储、查询、更新数据的功能，并能与多种编程语言和平台紧密集成，为企业级应用提供强大的数据支持。
 
@@ -156,6 +158,7 @@ graph LR
 #### 10.1.2 网络架构
 
 因为本文的旅游信息管理系统是 B/S 结构，所以在网络架构设计时采用四层和两层的网络结构。系统用户和系统管理员可以使用任何具备 Internet 浏览功能的浏览器，通过 Http 协议访问实现对系统的访问，不需要在客户机上安装任何客户端程序。
+
 ```mermaid
 graph LR
     A[系统用户] -->|Internet| B[旅游信息管理系统]
@@ -163,6 +166,7 @@ graph LR
     C -->|浏览器| D[无客户端程序]
     D --> E[系统管理员]
     D --> F[系统用户]
+    G[系统管理员] -->|Internet| B
 ```
 
 ### 10.2 系统的概要设计
@@ -176,15 +180,17 @@ graph TD
     A[前台展示] --> B[旅游景点展示]
     A --> C[地方美食展示]
     A --> D[旅游线路展示]
+    A --> L[旅游新闻]
     A --> E[用户登录]
     B --> F[景点查询]
     C --> G[美食查询]
-    D --> H[线路查询]
+    D --> H[线路查询与预订]
+    L --> M[旅游新闻公式]
     E --> I[个人主页]
     E --> J[线路预订]
     E --> K[个人信息管理]
 
-    
+    style M fill:#ffb,stroke:#333,stroke-width:2px;
     style F fill:#ffb,stroke:#333,stroke-width:2px;
     style G fill:#ffb,stroke:#333,stroke-width:2px;
     style H fill:#ffb,stroke:#333,stroke-width:2px;
@@ -410,7 +416,66 @@ graph TD
 
 系统部分 E-R 图描述了系统中实体及其关系。该 E-R 图包括用户、管理员、景点、酒店、线路、航班、火车、客车、公交、论坛贴子等实体。
 
-![系统部分 E-R 图](file-9BvqmSlKN9Hs7CiT8hcRG4hJ)
+```mermaid
+erDiagram
+    USER {
+        int id
+        varchar username
+        varchar password
+    }
+    ADMIN {
+        int id
+        varchar username
+        varchar password
+    }
+    ATTRACTION {
+        int id
+        varchar name
+    }
+    HOTEL {
+        int id
+        varchar name
+    }
+    ROUTE {
+        int id
+        varchar name
+    }
+    FLIGHT {
+        int id
+        varchar name
+    }
+    TRAIN {
+        int id
+        varchar name
+    }
+    BUS {
+        int id
+        varchar name
+    }
+    FORUM_POST {
+        int id
+        varchar title
+    }
+    BOOKING {
+        int id
+        varchar time
+    }
+
+    USER ||--o{ BOOKING : books
+    USER ||--o{ FORUM_POST : publishes
+    ADMIN ||--o{ ATTRACTION : manages
+    ADMIN ||--o{ HOTEL : manages
+    ADMIN ||--o{ ROUTE : manages
+    ADMIN ||--o{ FLIGHT : manages
+    ADMIN ||--o{ TRAIN : manages
+    ADMIN ||--o{ BUS : manages
+    ATTRACTION ||--|{ BOOKING : includes
+    HOTEL ||--|{ BOOKING : includes
+    ROUTE ||--|{ BOOKING : includes
+    FLIGHT ||--|{ BOOKING : includes
+    TRAIN ||--|{ BOOKING : includes
+    BUS ||--|{ BOOKING : includes
+```
 
 ### 10.5 表结构设计
 
