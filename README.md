@@ -799,12 +799,227 @@ yuding 表用来存储预定的信息。
 
 ## 十二·测试
 系统测试包括单元测试、集成测试和系统测试，目的是在软件投入运行前尽可能多地发现错误，确保软件质量。
-具体测试包含在演示视频中体现
+___具体测试包含在演示视频中体现___
 
-## 十三·总结
-通过系统开发，提高了对系统分析、数据流图、数据字典等系统设计工具的认识，积累了宝贵的经验。
+## 十三·代码解释
+___这里只展示代码主干___
+### 13.1·地方美食管理（DifangmeishiController） 功能总结
+
+`DifangmeishiController` 是一个 Spring MVC 控制器类，负责管理地方美食相关的操作。以下是该类的主要功能概述：
+
+### 后台功能
+
+1. **列表页 (`/difangmeishi_list`)**
+   - 检查用户是否登录，未登录则跳转到登录页面。
+   - 从请求参数中获取排序方式和分页信息，构建查询条件并执行查询，返回地方美食列表。
+
+2. **添加页面 (`/difangmeishi_add`)**
+   - 初始化数据并返回添加地方美食的页面。
+
+3. **更新页面 (`/difangmeishi_updt`)**
+   - 根据ID获取地方美食信息，并返回更新页面。
+
+4. **插入数据 (`/difangmeishiinsert`)**
+   - 从请求中获取地方美食信息，创建实体并插入数据库，返回操作结果。
+   ```java
+   @RequestMapping("/difangmeishiinsert")
+   public String insert()
+   {
+       _var = new LinkedHashMap(); // 重置数据
+       String tmp="";
+       Difangmeishi post = new Difangmeishi();  // 创建实体类
+       // 设置前台提交上来的数据到实体类中
+       post.setMeishibianhao(Request.get("meishibianhao"));
+       post.setMingcheng(Request.get("mingcheng"));
+       post.setFujinjingdian(Request.get("fujinjingdian"));
+       post.setFenlei(Request.get("fenlei"));
+       post.setTupian(Request.get("tupian"));
+       post.setJiage(Request.getDouble("jiage"));
+       post.setMeishijianjie(Request.get("meishijianjie"));
+       post.setAddtime(Info.getDateStr());
+
+       service.insert(post); // 插入数据
+       int charuid = post.getId().intValue();
+
+       if(isAjax()){
+           return jsonResult(post);
+       }
+       return showSuccess("保存成功", Request.get("referer").equals("") ? request.getHeader("referer") : Request.get("referer"));
+   }
+   ```
+
+5. **更新数据 (`/difangmeishiupdate`)**
+   - 从请求中获取更新后的地方美食信息，更新数据库中的记录，返回操作结果。
+
+6. **详情页 (`/difangmeishi_detail`)**
+   - 根据ID获取地方美食的详细信息，返回详情页面。
+
+7. **删除记录 (`/difangmeishi_delete`)**
+   - 根据ID删除指定的地方美食记录，返回操作结果。
+    ```java
+    @RequestMapping("/difangmeishi_delete")
+    public String delete()
+    {
+        _var = new LinkedHashMap(); // 重置数据
+        if(!checkLogin()){
+            return showError("尚未登录");
+        }
+        int id = Request.getInt("id");  // 根据id 删除某行数据
+        HashMap map = Query.make("difangmeishi").find(id);
+
+                service.delete(id);// 根据id 删除某行数据
+                return showSuccess("删除成功",request.getHeader("referer"));//弹出删除成功，并跳回上一页
+    }
+    ```
+
+### 前台功能
+
+1. **列表页 (`/difangmeishilist`)**
+   - 构建查询条件，获取地方美食列表，返回前台显示。
+
+2. **详情页 (`/difangmeishidetail`)**
+   - 根据ID获取地方美食的详细信息，返回前台详情页面。
+
+### 辅助方法
+
+- **getWhere**
+  - 从请求中获取筛选条件，构建SQL查询条件。
+
+### 其他功能
+
+- 分页功能：通过获取 `page` 和 `pagesize` 参数实现分页。
+- 排序功能：通过获取 `order` 和 `sort` 参数实现排序。
+- 数据分配：使用 `assign` 方法将数据分配给前台页面使用。
+- 通用数据库访问：使用 `CommDAO` 执行通用的数据库查询。
+
+该控制器类结合了服务层 (`DifangmeishiService`) 和数据访问层 (`DifangmeishiMapper`)，实现了地方美食的增删改查及列表展示等功能。
+
+### 13.2·旅游线路管理（LvyouxianluController）功能总结
+
+`LvyouxianluController` 是一个 Spring MVC 控制器类，负责管理旅游线路相关的操作。以下是该类的主要功能概述：
+
+### 后台功能
+
+1. **列表页 (`/lvyouxianlu_list`)**
+   - 检查用户是否登录，未登录则跳转到登录页面。
+   - 从请求参数中获取排序方式和分页信息，构建查询条件并执行查询，返回旅游线路列表。
+   ```java
+    public class LvyouxianluController extends BaseController
+    {
+        @Autowired
+        private LvyouxianluMapper dao;
+        @Autowired
+        private LvyouxianluService service;
+
+        /**
+        *  后台列表页
+        *
+        */
+        @RequestMapping("/lvyouxianlu_list")
+        public String list()
+        {
+
+            // 检测是否有登录，没登录则跳转到登录页面
+            if(!checkLogin()){
+                return showError("尚未登录" , "./login.do");
+            }
+
+            String order = Request.get("order" , "id"); // 获取前台提交的URL参数 order  如果没有则设置为id
+            String sort  = Request.get("sort" , "desc"); // 获取前台提交的URL参数 sort  如果没有则设置为desc
+            int    pagesize = Request.getInt("pagesize" , 12); // 获取前台一页多少行数据
+            Example example = new Example(Lvyouxianlu.class); //  创建一个扩展搜索类
+            Example.Criteria criteria = example.createCriteria();          // 创建一个扩展搜索条件类
+            String where = " 1=1 ";   // 创建初始条件为：1=1
+            where += getWhere();      // 从方法中获取url 上的参数，并写成 sql条件语句
+            criteria.andCondition(where);   // 将条件写进上面的扩展条件类中
+            if(sort.equals("desc")){        // 判断前台提交的sort 参数是否等于  desc倒序  是则使用倒序，否则使用正序
+                example.orderBy(order).desc();  // 把sql 语句设置成倒序
+            }else{
+                example.orderBy(order).asc();   // 把 sql 设置成正序
+            }
+            int page = request.getParameter("page") == null ? 1 : Integer.valueOf(request.getParameter("page"));  // 获取前台提交的URL参数 page  如果没有则设置为1
+            page = Math.max(1 , page);  // 取两个数的最大值，防止page 小于1
+            List<Lvyouxianlu> list = service.selectPageExample(example , page , pagesize);   // 获取当前页的行数
+
+
+            
+            // 将列表写给界面使用
+            assign("totalCount" , request.getAttribute("totalCount"));
+            assign("list" , list);
+            assign("orderby" , order);  // 把当前排序结果写进前台
+            assign("sort" , sort);      // 把当前排序结果写进前台
+            return json();   // 将数据写给前端
+        }
+    ```
+
+2. **添加页面 (`/lvyouxianlu_add`)**
+   - 初始化数据并返回添加旅游线路的页面。
+
+3. **更新页面 (`/lvyouxianlu_updt`)**
+   - 根据ID获取旅游线路信息，并返回更新页面。
+
+4. **插入数据 (`/lvyouxianluinsert`)**
+   - 从请求中获取旅游线路信息，创建实体并插入数据库，返回操作结果。
+
+5. **更新数据 (`/lvyouxianluupdate`)**
+   - 从请求中获取更新后的旅游线路信息，更新数据库中的记录，返回操作结果。
+
+6. **详情页 (`/lvyouxianlu_detail`)**
+   - 根据ID获取旅游线路的详细信息，返回详情页面。
+
+7. **删除记录 (`/lvyouxianlu_delete`)**
+   - 根据ID删除指定的旅游线路记录，返回操作结果。
+
+### 前台功能
+
+1. **列表页 (`/lvyouxianlulist`)**
+   - 构建查询条件，获取旅游线路列表，返回前台显示。
+
+2. **详情页 (`/lvyouxianludetail`)**
+   - 根据ID获取旅游线路的详细信息，增加浏览量，返回前台详情页面。
+
+### 辅助方法
+
+- **getWhere**
+  - 从请求中获取筛选条件，构建SQL查询条件。
+  ```java
+      public String getWhere()
+    {
+        _var = new LinkedHashMap(); // 重置数据
+        String where = " ";
+        // 以下也是一样的操作，判断是否符合条件，符合则写入sql 语句
+            if(!Request.get("xianlubianhao").equals("")) {
+            where += " AND xianlubianhao LIKE '%"+Request.get("xianlubianhao")+"%' ";
+        }
+                if(!Request.get("xianlumingcheng").equals("")) {
+            where += " AND xianlumingcheng LIKE '%"+Request.get("xianlumingcheng")+"%' ";
+        }
+                if(!Request.get("chufadi").equals("")) {
+            where += " AND chufadi LIKE '%"+Request.get("chufadi")+"%' ";
+        }
+                if(!Request.get("tujingdi").equals("")) {
+            where += " AND tujingdi LIKE '%"+Request.get("tujingdi")+"%' ";
+        }
+                if(!Request.get("zhongdian").equals("")) {
+            where += " AND zhongdian LIKE '%"+Request.get("zhongdian")+"%' ";
+        }
+            return where;
+    }
+    ```
+
+### 其他功能
+
+- 分页功能：通过获取 `page` 和 `pagesize` 参数实现分页。
+- 排序功能：通过获取 `order` 和 `sort` 参数实现排序。
+- 数据分配：使用 `assign` 方法将数据分配给前台页面使用。
+- 通用数据库访问：使用 `CommDAO` 执行通用的数据库查询。
+
+该控制器类结合了服务层 (`LvyouxianluService`) 和数据访问层 (`LvyouxianluMapper`)，实现了旅游线路的增删改查及列表展示等功能。
+
+
 
 ## 十四·致谢
+通过系统开发，提高了对系统分析、数据流图、数据字典等系统设计工具的认识，积累了宝贵的经验。
 感谢学校和指导老师在设计过程中的帮助和建议，使系统开发水平得到了提高。
 
 ## 十五·项目结构
