@@ -1,7 +1,16 @@
 # java-travel-information-system 基于 Java 的旅游信息管理系统的设计与实现
 一个低级程序猿的sql作业罢了
 
-#
+# 项目Presentation
+【旅游信息管理-实现效果】 https://www.bilibili.com/video/BV17qafevEAe/?share_source=copy_web&vd_source=69f94f3200d33df280aebf5b0ee9e30b
+
+【旅游信息管理系统-项目部署框架与使用主要技术】 https://www.bilibili.com/video/BV1VAafefEHC/?share_source=copy_web&vd_source=69f94f3200d33df280aebf5b0ee9e30b
+
+【旅游信息管理系统-代码解释】 https://www.bilibili.com/video/BV13MafesE7y/?share_source=copy_web&vd_source=69f94f3200d33df280aebf5b0ee9e30b
+
+
+
+
 # 谢
 
 感谢学校和指导老师程老师在旅游信息系统设计过程中的帮助和建议，使我系统开发水平得到了提高。这是一次很重要的经历，有助于我之后的工作生活，非常感谢程老师的教导与帮助。
