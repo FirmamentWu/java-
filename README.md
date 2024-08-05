@@ -2,7 +2,6 @@
 一个低级程序猿的sql作业罢了
 
 ____项目地址:____
-项目地址：
 
 https://github.com/FirmamentWu/java-
 
