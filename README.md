@@ -861,12 +861,12 @@ yuding 表用来存储预定的信息。
 ### 十二·测试
 系统测试包括单元测试、集成测试和系统测试，目的是在软件投入运行前尽可能多地发现错误，确保软件质量。
 
-___具体测试包含在演示视频中体现___
+___具体测试包含在[项目presentation](#项目presentation)中体现___
 
 
 
 ## 十三·代码解释
-___这里只展示代码主干___
+___这里只展示部分代码，剩下部分主要在[项目presentation](#项目presentation)___
 ### 13.1·地方美食管理（DifangmeishiController） 功能总结
 
 `DifangmeishiController` 是一个 Spring MVC 控制器类，负责管理地方美食相关的操作。以下是该类的主要功能概述：
