@@ -1,5 +1,5 @@
 # java-travel-information-system 基于 Java 的旅游信息管理系统的设计与实现
-一个低级程序猿的sql作业罢了
+一个低级程序猿的sql作业罢了，随便看😁，哈哈哈。
 
 ____项目地址:____
 
