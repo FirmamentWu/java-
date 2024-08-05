@@ -1,6 +1,18 @@
 # java-travel-information-system 基于 Java 的旅游信息管理系统的设计与实现
 一个低级程序猿的sql作业罢了
 
+____项目地址:____
+项目地址：
+
+https://github.com/FirmamentWu/java-
+
+
+
+https://gitee.com/firmamentwu/java_travel_information_system
+
+
+
+
 # 项目Presentation
 【旅游信息管理-实现效果】 https://www.bilibili.com/video/BV17qafevEAe/?share_source=copy_web&vd_source=69f94f3200d33df280aebf5b0ee9e30b
 
